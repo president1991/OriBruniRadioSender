@@ -1,0 +1,140 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Federico Bruni">
+    <meta name="description" content="App della suite OriBruni che gestisce i punti radio">
+    <!--css -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/footer.css"/>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!--  -->
+    <title>OriBruniRadioSender</title>
+</head>
+<body>
+    <!-- Richiamo gli script -->
+    <script src="./functions.js"></script>
+    <!-- fine -->
+    <div class="container" style="margin-bottom: 25px;">
+        <div class="row">
+        <div class="col-sm-7">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="images/oribruni_radiosender.png" width="150px">
+                </div>
+                <div class="col-sm-6">
+                    <div id="statuscol">
+                        Status<br>
+                        <span id="internetconn"></span><br>
+                        <span id="internetconnroc"></span>
+                    </div>
+                </div>                    
+            </div>
+            <div class="row">
+                <div class="card cardcento">
+                    <div class="card-header">Scegli dove scrivere:</div>
+                    <!--scegliere se scriviere i dati sul un file csv e/o sul db-->
+                    <!--Group Box1: scegli dove scrivere i dati-->
+                        <div class="card-body">
+                            <input type="checkbox" id="toDB" name="todb" value="toDB">
+                            <label for="toDB">Scrivi sul db..</label><br>
+                            <label for="ip">Indirizzo:</label>
+                            <input type="text" id="ip" name="ip" value="http://localhost">
+                            <label for="port">Porta:</label>
+                            <input type="text" id="port" name="port" value="9099" size="6">
+                            <br>
+                            <input type="checkbox" id="toCSV" name="toCSV" value="toCSV" checked>
+                            <label for="toCSV">Scrivi su CSV..</label><br>
+                            <!-- submit -->
+                            <button id="btn_salva">Salva</button>
+                        </div> 
+                </div>
+            </div>
+            <div class="row">
+                <!--Group Box1: scegli da dove leggere le informazioni-->
+                <div class="card cardcento">
+                    <div class="card-header">ROC:</div>
+                    <div class="card-body">
+                            <label for="server">Server:</label>
+                            <input type="text" id="server" name="ip" value="http://roc.olresultat.se/getpunches.asp" size="40">
+                            <br>
+                            <label for="raceid">Race ID:</label>
+                            <input type="text" id="raceid" name="raceid" value="1657" size="4">
+                            <label for="raceid">Last #:</label>
+                            <input type="text" id="lastid" name="lastid" value="0" size="4">
+                            <br>
+                            <label for="startdatetime">Data:</label>
+                            <input type="datetime-local" id="startdate" name="date" size="16" width="120px">
+                            <button id="btn_now">Now!</button>
+                            <br>
+                            <button id="btn_roc_avvia">Start</button>
+                            <button id="btn_roc_stop" disabled>Stop</button>
+                    </div>
+                </div>
+            </div>
+                    <div class="row">
+                        <!--Group Box1: scegli da dove leggere le informazioni-->
+                        <div class="card cardcento">
+                            <div class="card-header">USB:</div>
+                    <div class="card-body">
+                            <input type="radio" id="SportIdent" name="tipo" value="SportIdent"> 
+                            <label for="radio">SportIdent USB</label><br>   
+                            <button id="btn_salva">Salva</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="col-sm-5">
+        <!--Group Box: Log-->
+        <div class="row">
+            <div class="card cardcento">
+                <div class="card-header">Log..</div>
+                <div class="card-body">
+                    <textarea id="log" style="width: 100%; min-height: 300;"></textarea>
+                    <script>
+                        document.getElementById("log").innerText = ' --- ' + getTimeNew() + ' --- ';
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- includo il Footer-->
+    <footer>
+        <div class="container_f footer navbar-fixed-bottom">
+            <span id="currentyear"></span> OriBruni RadioSender by Federico Bruni<span id="version"></span>
+        </div>
+    </footer>
+    <script>
+        var d = new Date();
+        if (d.getFullYear() == 2020)
+        {
+            document.getElementById("currentyear").innerHTML = d.getFullYear() + ' - ';
+        }
+        else
+        {
+            document.getElementById("currentyear").innerHTML = '2020 - ' + d.getFullYear();
+        }
+        //scrivo la versione
+        document.getElementById("version").innerHTML = 'Version: ' + require('electron').remote.app.getVersion();
+    </script>
+    <!-- fine footer-->
+
+    <script>
+        require('./index.js');
+    </script>
+    <script>
+        require('./checkinternetconn.js');
+    </script>
+    
+
+    <!-- Bootstrap Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>let $ = require('jquery');</script>
+    <script>require('bootstrap');</script>
+    
+        
+</body>
+</html>

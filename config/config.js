@@ -1,0 +1,1 @@
+{"lang_code":"it","default_server_port":"9909","version":"V10-alpha-3.0","testname":"Tomb01PC"}

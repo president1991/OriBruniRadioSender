@@ -1,0 +1,19 @@
+{
+    "name": "oribruniradiosender",
+    "version": "1.0.1",
+    "main": "main.js",
+    "devDependencies": {
+        "electron": "^8.2.3"
+    },
+    "scripts": {
+        "start": "electron ."
+    },
+    "dependencies": {
+        "bootstrap": "^4.4.1",
+        "csv-write-stream": "^2.0.0",
+        "electron-better-ipc": "^1.0.1",
+        "jquery": "^3.5.0",
+        "node-fetch": "^2.6.0",
+        "popper.js": "^1.16.1"
+    }
+}
